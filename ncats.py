@@ -7,7 +7,7 @@ import plotly.express as px
 "### Hello, Alec! <3 :bee:"
 
 
-file = st.file_uploader("upload file here")
+file = st.file_uploader("Upload the CSV file that has the columns [Compound] and [Cell line], the headers must be exact:")
 if not file:
     st.stop()
 df = pd.read_csv(file, index_col=0)
@@ -35,5 +35,5 @@ for stat_file in stat_files:
             st.plotly_chart(fig)
 
 
-stat_file_name_dict
-"now"
+#stat_file_name_dict
+#"now"
