@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import pathlib
 import plotly.express as px
+import seaborn as sn
 
 "### Hello, Alec! <3 :bee:"
 
@@ -34,6 +35,8 @@ for stat_file in stat_files:
             fig = px.imshow(df_stat)
             #fig.show()
             st.plotly_chart(fig)
+            img = seaborn.heatmap(df_stat)
+            img
 
 
 #stat_file_name_dict
