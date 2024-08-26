@@ -34,7 +34,7 @@ for stat_file in stat_files:
             if show_table:
                 df_stat
             fig = px.imshow(df_stat)
-            fig.update_layout(title_text=title, title_x=0.5)
+            fig.update_layout(title_text=title)
             #fig.show()
             st.plotly_chart(fig)
             #img = sn.heatmap(df_stat)
