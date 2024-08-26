@@ -27,7 +27,7 @@ for stat_file in stat_files:
     for read in df.index:
         if read in stat_file.name:
             stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read],dict["Cell line"][read]]
-            t.write('\t'.join(stat_file_name_dict[stat_file.name]))
+            st.write('\t'.join(stat_file_name_dict[stat_file.name]))
             df_stat = pd.read_csv(stat_file,delimiter='\t', skiprows=6, nrows=32, index_col=0)
             if show_table:
                 df_stat
