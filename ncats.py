@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import pathlib
 import plotly.express as px
-import seaborn as sn
+#import seaborn as sn
 
 "### Hello, Alec! <3 :bee:"
 
@@ -28,15 +28,17 @@ for stat_file in stat_files:
     for read in df.index:
         if read in stat_file.name:
             stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read],dict["Cell line"][read]]
-            st.write('\t'.join(stat_file_name_dict[stat_file.name]))
+            title = '\t'.join(stat_file_name_dict[stat_file.name])
+            st.write(title)
             df_stat = pd.read_csv(stat_file,delimiter='\t', skiprows=6, nrows=32, index_col=0)
             if show_table:
                 df_stat
             fig = px.imshow(df_stat)
+            fig.update_layout(title_text=title, title_x=0.5)
             #fig.show()
             st.plotly_chart(fig)
-            img = sn.heatmap(df_stat)
-            img
+            #img = sn.heatmap(df_stat)
+            #img
 
 
 #stat_file_name_dict
