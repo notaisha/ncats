@@ -35,7 +35,7 @@ for stat_file in stat_files:
             fig = px.imshow(df_stat)
             #fig.show()
             st.plotly_chart(fig)
-            img = seaborn.heatmap(df_stat)
+            img = sn.heatmap(df_stat)
             img
 
 
