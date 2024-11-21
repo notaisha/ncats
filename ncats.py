@@ -3,7 +3,8 @@ import pandas as pd
 import os
 import pathlib
 import plotly.express as px
-#import seaborn as sn
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 "### Hello, Alec! <3 :bee:"
 
@@ -18,6 +19,7 @@ dict = df.to_dict()
 #dict
 #st.write(dict["Compound"]["T5747796"])
 
+fig = make_subplots(rows=1, cols=2)
 
 stat_files = st.file_uploader("drag all stat files here", accept_multiple_files=True)
 if not stat_files:
@@ -33,10 +35,22 @@ for stat_file in stat_files:
             df_stat = pd.read_csv(stat_file,delimiter='\t', skiprows=6, nrows=32, index_col=0)
             if show_table:
                 df_stat
-            fig = px.imshow(df_stat)
-            fig.update_layout(title_text=title)
+                df_values = df_stat.values
+ 
+
+            img = px.imshow(df_stat)
+            st.plotly_chart(img)
+            img  = go.Figure(data=go.Heatmap(
+                z=df_stat["1"],#.values,  # Data to be displayed in the heatmap
+                x=df_stat.columns,  # Labels for x-axis (columns)
+                y=df_stat.index  # Labels for y-axis (rows)
+                ))
+            img.update_layout(title_text=title)
             #fig.show()
+            fig.add_trace(go.Image(z=img), 1, 1)
             st.plotly_chart(fig)
+            st.plotly_chart(img)
+
             #img = sn.heatmap(df_stat)
             #img
 
