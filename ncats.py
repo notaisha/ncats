@@ -16,8 +16,6 @@ if online:
     if not file:
         st.stop()
     df = pd.read_csv(file, index_col=0)
-    if "Cell line" not in my_dict:
-        my_dict["Cell line"] = []
     df
 
     dict = df.to_dict()
@@ -36,7 +34,10 @@ for stat_file in stat_files:
     if online:
         for read in df.index:
             if read in stat_file.name:
-                stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read],dict["Cell line"][read]]
+                try:
+                    stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read],dict["Cell line"][read]]
+                except KeyError:
+                    stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read]]
                 title = '\t'.join(stat_file_name_dict[stat_file.name])
     else:
         title = stat_file.name.replace(".stat1","")
