@@ -39,7 +39,7 @@ for stat_file in stat_files:
                 stat_file_name_dict[stat_file.name]=[read, dict["Compound"][read],dict["Cell line"][read]]
                 title = '\t'.join(stat_file_name_dict[stat_file.name])
     else:
-        title = stat_file.name.replace(".stat","")
+        title = stat_file.name.replace(".stat1","")
     
     df_stat = pd.read_csv(stat_file,delimiter='\t', skiprows=6, nrows=32, index_col=0)
     if show_table:
