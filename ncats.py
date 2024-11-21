@@ -3,8 +3,10 @@ import pandas as pd
 import os
 import pathlib
 import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
+import io
+
+
+
 
 "### Hello, Alec! <3 :bee:"
 
@@ -17,7 +19,6 @@ if online:
         st.stop()
     df = pd.read_csv(file, index_col=0)
     df
-
     dict = df.to_dict()
 
 #fig = make_subplots(rows=1, cols=1)
@@ -48,17 +49,9 @@ for stat_file in stat_files:
         df_stat
         df_values = df_stat.values
  
-
     img = px.imshow(df_stat)
     img.update_layout(title_text=title)
-    st.plotly_chart(img)
-            #fig = go.Figure(data=img.data, layout=fig.layout)
-            #st.plotly_chart(fig)
+    st.plotly_chart(img,use_container_width=True)
 
 
-            #img = sn.heatmap(df_stat)
-            #img
 
-
-#stat_file_name_dict
-#"now"
