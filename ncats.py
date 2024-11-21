@@ -8,7 +8,12 @@ import plotly.graph_objects as go
 
 "### Hello, Alec! <3 :bee:"
 
-offline = st.toggle("Offline")
+offline = st.toggle("Robot run", value=True)
+
+#if offline:
+
+
+
 
 file = st.file_uploader("Upload the CSV file that has the columns [Compound] and [Cell line], the headers must be exact:")
 if not file:
@@ -17,10 +22,8 @@ df = pd.read_csv(file, index_col=0)
 df
 
 dict = df.to_dict()
-#dict
-#st.write(dict["Compound"]["T5747796"])
 
-fig = make_subplots(rows=1, cols=2)
+#fig = make_subplots(rows=1, cols=1)
 
 stat_files = st.file_uploader("drag all stat files here", accept_multiple_files=True)
 if not stat_files:
@@ -42,8 +45,8 @@ for stat_file in stat_files:
             img = px.imshow(df_stat)
             img.update_layout(title_text=title)
             st.plotly_chart(img)
-            fig = go.Figure(data=img.data, layout=fig.layout)
-            st.plotly_chart(fig)
+            #fig = go.Figure(data=img.data, layout=fig.layout)
+            #st.plotly_chart(fig)
 
 
             #img = sn.heatmap(df_stat)
