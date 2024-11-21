@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 
 "### Hello, Alec! <3 :bee:"
 
+offline = st.toggle("Offline")
 
 file = st.file_uploader("Upload the CSV file that has the columns [Compound] and [Cell line], the headers must be exact:")
 if not file:
@@ -39,17 +40,11 @@ for stat_file in stat_files:
  
 
             img = px.imshow(df_stat)
-            st.plotly_chart(img)
-            img  = go.Figure(data=go.Heatmap(
-                z=df_stat["1"],#.values,  # Data to be displayed in the heatmap
-                x=df_stat.columns,  # Labels for x-axis (columns)
-                y=df_stat.index  # Labels for y-axis (rows)
-                ))
             img.update_layout(title_text=title)
-            #fig.show()
-            fig.add_trace(go.Image(z=img), 1, 1)
-            st.plotly_chart(fig)
             st.plotly_chart(img)
+            fig = go.Figure(data=img.data, layout=fig.layout)
+            st.plotly_chart(fig)
+
 
             #img = sn.heatmap(df_stat)
             #img
