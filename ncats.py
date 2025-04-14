@@ -23,7 +23,7 @@ if online:
     df
     dict = df.to_dict()
 else:
-    row_skip_count = 7
+    row_skip_count = 6
 
 #fig = make_subplots(rows=1, cols=1)
 
