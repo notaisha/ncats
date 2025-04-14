@@ -53,8 +53,8 @@ for stat_file in stat_files:
     neg_sd = df_stat["1"].std()
     neg_thresh = neg_mean + (3*neg_sd)
     
-    pos_mean = df_stat["2"].mean()
-    pos_sd = df_stat["2"].std()
+    pos_mean = df_stat["3"].mean()
+    pos_sd = df_stat["3"].std()
     pos_thresh = pos_mean - (3*pos_sd)
 
     s = pos_thresh - neg_thresh
